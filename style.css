@@ -1,5 +1,17 @@
+body {
+    display: flex;
+    justify-content: center;
+}
+
+.container {
+    width: 960px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
 .panel {
+    box-sizing: border-box;
     border: 1px solid red;
-    height: 10px;
-    width: 10px;
+    height: 60px;
+    width: 60px;
 }
