@@ -5,3 +5,13 @@ for (let i = 0; i < 256; i++) {
     div.classList.add('panel')
     container.appendChild(div);
 }
+
+function changeColour(e) {
+    e.srcElement.setAttribute('style', 'background: black;')
+}
+
+const panels = document.querySelectorAll('.panel')
+
+for (let panel of panels) {
+    panel.addEventListener('mouseover', changeColour)
+}

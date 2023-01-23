@@ -7,11 +7,10 @@ body {
     width: 960px;
     display: flex;
     flex-wrap: wrap;
+    border: 1px solid black;
 }
 
 .panel {
-    box-sizing: border-box;
-    border: 1px solid red;
     height: 60px;
     width: 60px;
 }
