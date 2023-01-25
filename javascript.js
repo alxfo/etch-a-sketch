@@ -1,10 +1,15 @@
 const container = document.querySelector('.container');
 const btn = document.querySelector('#size');
+let panelsPerSide = 16;
+let totalPanels = panelsPerSide * panelsPerSide;
+
+// split into three functions: one to get panelsPerSide as input, one to create
+// the panels, one to call both when button clicked
 
 function changeSize() {
-    let size = prompt('How many squares per side? (max 100)');
+    panelsPerSide = prompt('How many squares per side? (max 100)');
 
-    totalPanels = size * size
+    totalPanels = panelsPerSide * panelsPerSide
 
     while (container.firstChild) {
         container.removeChild(container.lastChild);
@@ -25,7 +30,7 @@ function changeSize() {
 
 btn.addEventListener('click', changeSize);
 
-for (let i = 0; i < 256; i++) {
+for (let i = 0; i < totalPanels; i++) {
     let div = document.createElement('div');
     div.classList.add('panel');
     container.appendChild(div);

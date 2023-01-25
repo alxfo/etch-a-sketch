@@ -8,15 +8,18 @@ body {
     margin: 25px;
 }
 
+/* replace grid-template-columns and grid-template-rows with variables */
+
 .container {
     width: 960px;
     height: 960px;
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(16, 1fr);
+    grid-template-rows: repeat(16, 1fr);
     border: 1px solid black;
 }
 
 .panel {
-    height: 60px;
-    width: 60px;
+    box-sizing: border-box;
+    border: 1px solid red;
 }
