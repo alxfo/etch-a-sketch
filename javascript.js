@@ -1,28 +1,30 @@
+// page element variables
+
 const container = document.querySelector('.container');
 const btn = document.querySelector('#size');
+const cssRoot = document.querySelector(':root');
+
+// initial grid size values as variables
+
 let panelsPerSide = 16;
 let totalPanels = panelsPerSide * panelsPerSide;
 
-let cssRoot = document.querySelector(':root');
+// function to change grid size in CSS
 
 function setCSSGridSize() {
     cssRoot.style.setProperty('--panelsPerSide', `${panelsPerSide}`)
 }
 
-// split into three functions: one to get panelsPerSide as input, one to create
-// the panels, one to call both when button clicked
+// function to get desired grid size from user
 
-function changeSize() {
-    panelsPerSide = prompt('How many squares per side? (max 100)');
+function setPanelsPerSide() {
+    panelsPerSide = prompt('How many squares per side? (max 100');
+    totalPanels = panelsPerSide * panelsPerSide;
+}
 
-    totalPanels = panelsPerSide * panelsPerSide
+// function to create the grid and set the mouseover effect
 
-    while (container.firstChild) {
-        container.removeChild(container.lastChild);
-    }
-    
-    setCSSGridSize();
-
+function createGrid () {
     for (let i = 0; i < totalPanels; i++) {
         let div = document.createElement('div');
         div.classList.add('panel');
@@ -34,15 +36,28 @@ function changeSize() {
     for (let panel of panels) {
         panel.addEventListener('mouseover', changeColour);
     };
+}
+
+// function to remove the grid
+
+function removeGrid () {
+    while (container.firstChild) {
+        container.removeChild(container.lastChild);
+    }
+}
+
+// function to recreate the grid with size from user input
+
+function replaceGrid() {
+    setPanelsPerSide()
+    setCSSGridSize();
+    removeGrid();
+    createGrid();
 };
 
-btn.addEventListener('click', changeSize);
+createGrid();
 
-for (let i = 0; i < totalPanels; i++) {
-    let div = document.createElement('div');
-    div.classList.add('panel');
-    container.appendChild(div);
-};
+btn.addEventListener('click', replaceGrid);
 
 function changeColour(e) {
     e.srcElement.setAttribute('style', 'background: black;');
