@@ -12,15 +12,19 @@ let totalPanels = panelsPerSide * panelsPerSide;
 // function to change grid size in CSS
 
 function setCSSGridSize() {
-    cssRoot.style.setProperty('--panelsPerSide', `${panelsPerSide}`)
-}
+    cssRoot.style.setProperty('--panelsPerSide', `${panelsPerSide}`);
+};
 
 // function to get desired grid size from user
 
 function setPanelsPerSide() {
     panelsPerSide = prompt('How many squares per side? (max 100');
+    if (panelsPerSide > 100) {
+        setPanelsPerSide();
+    } else {
     totalPanels = panelsPerSide * panelsPerSide;
-}
+    };
+};
 
 // function to create the grid and set the mouseover effect
 
@@ -29,27 +33,27 @@ function createGrid () {
         let div = document.createElement('div');
         div.classList.add('panel');
         container.appendChild(div);
-    }
+    };
 
     const panels = document.querySelectorAll('.panel');
 
     for (let panel of panels) {
         panel.addEventListener('mouseover', changeColour);
     };
-}
+};
 
 // function to remove the grid
 
 function removeGrid () {
     while (container.firstChild) {
         container.removeChild(container.lastChild);
-    }
-}
+    };
+};
 
 // function to recreate the grid with size from user input
 
 function replaceGrid() {
-    setPanelsPerSide()
+    setPanelsPerSide();
     setCSSGridSize();
     removeGrid();
     createGrid();
