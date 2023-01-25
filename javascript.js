@@ -3,6 +3,12 @@ const btn = document.querySelector('#size');
 let panelsPerSide = 16;
 let totalPanels = panelsPerSide * panelsPerSide;
 
+let cssRoot = document.querySelector(':root');
+
+function setCSSGridSize() {
+    cssRoot.style.setProperty('--panelsPerSide', `${panelsPerSide}`)
+}
+
 // split into three functions: one to get panelsPerSide as input, one to create
 // the panels, one to call both when button clicked
 
@@ -15,6 +21,8 @@ function changeSize() {
         container.removeChild(container.lastChild);
     }
     
+    setCSSGridSize();
+
     for (let i = 0; i < totalPanels; i++) {
         let div = document.createElement('div');
         div.classList.add('panel');
