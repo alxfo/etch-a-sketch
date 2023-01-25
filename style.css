@@ -1,3 +1,7 @@
+html {
+    --panelsPerSide: 16;
+}
+
 body {
     display: flex;
     flex-direction: column;
@@ -8,14 +12,12 @@ body {
     margin: 25px;
 }
 
-/* replace grid-template-columns and grid-template-rows with variables */
-
 .container {
     width: 960px;
     height: 960px;
     display: grid;
-    grid-template-columns: repeat(16, 1fr);
-    grid-template-rows: repeat(16, 1fr);
+    grid-template-columns: repeat(var(--panelsPerSide), 1fr);
+    grid-template-rows: repeat(var(--panelsPerSide), 1fr);
     border: 1px solid black;
 }
 
