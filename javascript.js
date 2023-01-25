@@ -18,7 +18,7 @@ function setCSSGridSize() {
 // function to get desired grid size from user
 
 function setPanelsPerSide() {
-    panelsPerSide = prompt('How many squares per side? (max 100');
+    panelsPerSide = prompt('How many squares per side? (max 100)');
     if (panelsPerSide > 100) {
         setPanelsPerSide();
     } else {
